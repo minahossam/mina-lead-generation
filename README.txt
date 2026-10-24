@@ -1,14 +1,18 @@
-أداة تجهيز قوائم عملاء B2B — نسخة أولية
+B2B Lead Builder - Automatic company list version
 
-الملفات:
-- app.py: كود التطبيق
-- requirements.txt: المكتبات المطلوبة
+This version automatically queries public company records from Wikidata and builds an Excel/CSV file.
 
-النشر من المتصفح مجانًا:
-1) أنشئ حساب GitHub ثم مستودعًا جديدًا (Repository).
-2) ارفع الملفين app.py و requirements.txt إلى المستودع.
-3) سجّل الدخول في https://share.streamlit.io عبر GitHub.
-4) اختر Create app ثم اختر المستودع والفرع main وملف app.py، ثم Deploy.
-5) بعد النشر ستحصل على رابط للتطبيق.
+Install/deploy:
+1. Upload app_auto.py to the root of your existing GitHub repository.
+2. Keep the existing requirements.txt (streamlit, pandas, openpyxl). requests is not required; the app uses Python's standard library for HTTP.
+3. In Streamlit Community Cloud, open your app's settings or deploy a new app from the same repository.
+4. Set Main file path to: app_auto.py
+5. Deploy / Reboot the app.
+6. Enter a country (English works best), optional industry keyword, then click "ابحث وأنشئ ملف العملاء".
+7. Download the generated Excel or CSV file.
 
-ملاحظة: التطبيق ينشئ روابط بحث فقط ولا يجمع بيانات الويب تلقائيًا. أدخل البيانات التي يُسمح لك بجمعها واستخدامها فقط. هذه النسخة لا تحفظ البيانات بشكل دائم عند إغلاق الجلسة، لذلك نزّل ملف Excel/CSV بعد كل جلسة.
+Important limitations:
+- The app uses the public Wikidata Query Service and only finds records available there. It does not represent a complete business directory.
+- Publicly listed work emails, phones, and contact-person details may be missing; the app intentionally leaves unknown fields blank.
+- People Search Link is a link to open a manual search. The app does not scrape LinkedIn or Google search results.
+- The Completeness Score shows how many fields are populated, not whether the lead is verified.
